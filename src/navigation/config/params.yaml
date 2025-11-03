@@ -1,0 +1,36 @@
+path_tracking_node:
+  ros__parameters:
+    path_smoother:
+      type: "simple"  # Options: "simple", "savgol", "spline"
+      simple:
+        w_data: 0.2
+        w_smooth: 0.3
+        max_iterations: 1000
+        tolerance: 1e-10
+      savgol:
+        window_size: 7
+        polynomial_order: 3
+
+    trajectory_generator:
+      resolution: 0.05  # meters
+      v_max: 0.5        # m/s
+      a_max: 0.5        # m/s^2
+      curvature_velocity_scaling: true
+
+    controller:
+      lookahead_time: 1.0
+      min_lookahead: 0.3    # meters
+      max_lookahead: 1.5    # meters
+      curvature_slowdown_radius: 1.0  # meters
+      proximity_slowdown_dist: 0.5    # meters
+      proximity_gain: 0.8
+      v_max: 0.5           # m/s
+      omega_max: 1.0       # rad/s
+      use_collision_checking: true
+
+    visualization:
+      publish_paths: true
+      publish_trajectory: true
+      publish_lookahead: true
+      publish_curvature: false
+

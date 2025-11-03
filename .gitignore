@@ -1,0 +1,13 @@
+# Ignore ROS2 workspace build artifacts
+build/
+install/
+log/
+
+# Optional: ignore editor or system files
+*.swp
+*.bak
+*.tmp
+.DS_Store
+.vscode/
+.idea/
+
