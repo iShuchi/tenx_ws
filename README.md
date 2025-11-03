@@ -1,4 +1,4 @@
-# **TenX Workspace for Waypoint Navigation**
+# **Workspace for Waypoint Navigation**
 
 This repository provides a navigation framework for the **TurtleBot3** using ROS2 Humble and Gazebo Classic. workspace integrates with the **Cartographer** package for Simultaneous Localization and Mapping (SLAM) and **Navigation2** for path planning and execution. The map saved inside folder is *custom generated* with the following commands,
 
@@ -118,15 +118,7 @@ The system uses a **Pure Pursuit** algorithm for path following, combined with a
 
 Pure Pursuit is a geometrical path-following algorithm used to navigate the robot along a desired path. It calculates the steering angle required to move the robot towards a point on the path at a fixed lookahead distance. The controller adjusts this lookahead point dynamically to ensure smoother turns.
 
-Mathematically, the lookahead distance ( L ) is chosen such that:
-[
-L = k \cdot d
-]
-Where ( k ) is a constant factor, and ( d ) is the current robot speed. The steering angle ( \delta ) can be computed as:
-[
-\delta = \tan^{-1} \left( \frac{2L}{r} \right)
-]
-Where ( r ) is the radius of the curvature.
+Mathematically, the lookahead distance ( L ) is chosen such that L = kd. Where ( k ) is a constant factor, and ( d ) is the current robot speed. The steering angle ( delta ) can be computed as atan2(2L/r).
 
 #### **Smoothing Techniques**:
 
@@ -145,18 +137,7 @@ Three smoothing algorithms are used:
 
 For real robots, constant velocity paths are not ideal due to physical constraints, like acceleration and deceleration limits. To address this, we use a **Trapezoidal Velocity Profile** to allow for smooth acceleration and deceleration phases in the robot's motion.
 
-* The profile can be defined as:
-  [
-  v(t) =
-  \begin{cases}
-  \text{acceleration phase} & t \leq t_1 \
-  \text{constant velocity} & t_1 < t < t_2 \
-  \text{deceleration phase} & t \geq t_2
-  \end{cases}
-  ]
-  Where ( t_1 ) and ( t_2 ) are the times at which the robot reaches its maximum velocity and starts decelerating, respectively.
-
-This technique can be added by adjusting the velocity commands in the path-following logic. The velocity should change based on the robot's current speed and distance from the next goal, ensuring a smooth transition between states.
+The profile can be defined on the basis of acceleration, constant and deacceleration phase. This technique can be added by adjusting the velocity commands in the path-following logic. The velocity should change based on the robot's current speed and distance from the next goal, ensuring a smooth transition between states.
 
 ---
 
