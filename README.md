@@ -118,7 +118,7 @@ The system uses a **Pure Pursuit** algorithm for path following, combined with a
 
 Pure Pursuit is a geometrical path-following algorithm used to navigate the robot along a desired path. It calculates the steering angle required to move the robot towards a point on the path at a fixed lookahead distance. The controller adjusts this lookahead point dynamically to ensure smoother turns.
 
-Mathematically, the lookahead distance ( L ) is chosen such that L = kd. Where ( k ) is a constant factor, and ( d ) is the current robot speed. The steering angle ( delta ) can be computed as atan2(2L/r).
+Mathematically, the lookahead distance (L) is chosen such that L = kd. Where (k) is a constant factor, and (d) is the current robot speed. The steering angle (delta) can be computed as atan2(2L/r).
 
 #### **Smoothing Techniques**:
 
@@ -177,15 +177,4 @@ To incorporate **obstacle avoidance**, you can modify the existing `path_trackin
 
 ## **AI Tools Used**
 
-This project leverages **ROS2 Navigation2** for path planning and **Cartographer** for simultaneous localization and mapping (SLAM). Both tools provide an essential foundation for autonomous navigation in complex environments.
-
-### **Navigation2**:
-
-* **DWB Local Planner**: Used for real-time velocity generation while avoiding obstacles.
-* **Costmaps**: For managing obstacles in the robot’s environment and ensuring the robot stays clear of them.
-
-### **Cartographer**:
-
-* **SLAM**: Cartographer is responsible for mapping the environment and localizing the robot in real-time.
-
----
+This project was built with the help of internet resources for technical knowledge and ChatGPT.
